@@ -1,0 +1,10 @@
+{
+  "description": "Create beautifully responsive web pages that adapt seamlessly to any device, ensuring an optimal user experience for all visitors.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
