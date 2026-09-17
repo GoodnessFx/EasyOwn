@@ -3,6 +3,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
 
 dotenv.config();
 
@@ -65,6 +67,22 @@ app.get('/verify/:transactionRef', verifyLimiter, (req, res) => {
     ref: req.params.transactionRef
   });
 });
+
+// --- Static frontend (apps/web/dist) with SPA fallback ---
+const webDistDir = path.resolve(__dirname, '../../web/dist');
+if (fs.existsSync(webDistDir)) {
+  app.use(express.static(webDistDir));
+
+  // SPA fallback: serve index.html for any non-API GET request
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/health') || req.path.startsWith('/verify')) {
+      return next();
+    }
+    res.sendFile(path.join(webDistDir, 'index.html'));
+  });
+} else {
+  console.warn(`Web dist not found at ${webDistDir} - serving API only`);
+}
 
 // Error handling middleware
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
