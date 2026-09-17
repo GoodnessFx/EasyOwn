@@ -6,5 +6,6 @@
     "build": "pnpm -r run build",
     "lint": "pnpm -r run lint",
     "start": "node apps/server/dist/index.js"
-  }
+  },
+  "packageManager": "pnpm@12.4.2"
 }
