@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "pnpm -r run dev",
-    "build": "pnpm -r run build",
+    "build": "corepack enable && corepack prepare pnpm@12.4.2 --activate && pnpm install && pnpm -r run build",
     "lint": "pnpm -r run lint",
     "start": "node apps/server/dist/index.js"
   },
