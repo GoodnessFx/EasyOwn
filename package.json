@@ -3,13 +3,8 @@
   "private": true,
   "scripts": {
     "dev": "pnpm -r run dev",
-    "build": "npm install pnpm@12.4.2 --no-save && ./node_modules/.bin/pnpm install --config.minimum-release-age=0 && ./node_modules/.bin/pnpm -r run build",
+    "build": "npm install pnpm@12.4.2 --no-save && ./node_modules/.bin/pnpm install && ./node_modules/.bin/pnpm -r run build",
     "lint": "pnpm -r run lint",
     "start": "node apps/server/dist/index.js"
-  },
-  "pnpm": {
-    "overrides": {
-      "lucide-react": "1.44.0"
-    }
   }
 }
