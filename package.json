@@ -3,9 +3,8 @@
   "private": true,
   "scripts": {
     "dev": "pnpm -r run dev",
-    "build": "corepack enable && corepack prepare pnpm@12.4.2 --activate && pnpm install && pnpm -r run build",
+    "build": "npm install pnpm --no-save && node ./node_modules/pnpm/bin/pnpm.cjs install && node ./node_modules/pnpm/bin/pnpm.cjs -r run build",
     "lint": "pnpm -r run lint",
     "start": "node apps/server/dist/index.js"
-  },
-  "packageManager": "pnpm@12.4.2"
+  }
 }
